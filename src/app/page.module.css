@@ -21,15 +21,7 @@
   font-size: 24px;
   font-weight: 300;
 }
-.btn{
-  cursor: pointer;
-  padding: 20px;
-  background-color: #53C28B;
-  border: none;
-  border-radius: 5px;
-  width: max-content;
-  color: white;
-}
+
 
 .img{
   width: 100%;
