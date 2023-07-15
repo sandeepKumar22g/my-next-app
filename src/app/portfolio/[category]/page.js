@@ -2,22 +2,35 @@ import React from 'react'
 import styles from "./page.module.css"
 import { Button } from '@/components'
 import Image from 'next/image'
+import { items } from './data'
+import { notFound } from 'next/navigation'
+
+const getData = (cat) =>{
+  const data = items[cat];
+
+  if(data){
+    return data
+  }
+  return notFound()
+}
 
 const Category = ({params}) => {
+  const data = getData(params.category)
   return (
     <div className={styles.container} >
       <h1 className={styles.catTitle} >{params.category}</h1>
-      {}
-      <div className={styles.item}>
+      {data.map(item =>(
+      <div className={styles.item} key={item.id}>
         <div className={styles.content}>
-          <h1 className={styles.title} >test</h1>
-          <p className={styles.desc} >desc</p>
+          <h1 className={styles.title} >{item.title}</h1>
+          <p className={styles.desc} >{item.desc}</p>
           <Button url="#" text="See more" />
         </div>
         <div className={styles.imgContainer}>
-          <Image src="https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg" alt="img" fill className={styles.img} />
+          <Image src={item.image} alt="img" fill className={styles.img} />
         </div>
       </div>
+      ))}
     </div>
   )
 }
