@@ -1,8 +1,22 @@
 import Image from 'next/image'
 import React from 'react'
 import styles from "./page.module.css"
+import {notFound} from "next/navigation"
 
-const BlogView = () => {
+async function getData(slug) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {
+    cache: "no-store"
+  })
+
+  if (!res.ok) {
+    return notFound()
+  }
+ 
+  return res.json()
+}
+
+const BlogView = async ({params}) => {
+  const data = await getData(params.slug)
   return (
     <div className={styles.container}>
       <div className={styles.top}>
