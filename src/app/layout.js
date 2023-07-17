@@ -1,4 +1,4 @@
-import { Footer, Navbar } from "@/components";
+import { AuthProvider, Footer, Navbar } from "@/components";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -15,11 +15,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
+          <AuthProvider>
           <div className="container">
             <Navbar />
             {children}
             <Footer />
           </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
