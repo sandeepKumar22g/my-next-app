@@ -4,7 +4,7 @@ import styles from "./page.module.css"
 import {notFound} from "next/navigation"
 
 async function getData(slug) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
     cache: "no-store"
   })
 
