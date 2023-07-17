@@ -15,6 +15,14 @@ async function getData(slug) {
   return res.json()
 }
 
+export async function generateMetadata({ params }) {
+  const post = await getData(params.slug)
+  return {
+    title: post.title,
+    description: post.desc
+  }
+}
+
 const BlogView = async ({params}) => {
   const data = await getData(params.slug)
   return (
